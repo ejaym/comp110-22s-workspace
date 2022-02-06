@@ -11,12 +11,12 @@ def main() -> None:
         print(f"=== Turn {turns}/6 ===")
         guess: str = input_guess(len(secret_word_global))  # Here I am binding the length of the secret word as the argument to be used in the input_guess function so that it is easier to write later on.
         print(emojified(guess, secret_word_global))  # This statement ensures the emoji boxes are actually printed by giving emojified arguements to fit its parameters.
-        if secret_word_global == guess: 
+        if secret_word_global == guess and turns <= 6: 
             print(f"You won in {turns}/6 turns!")
-            quit() 
-        turns += 1 
-    if turns > 6:
-        print("X/6 - Sorry, try again tomorrow!")
+            turns = 7
+        if secret_word_global != guess and turns == 6:
+            print("X/6 - Sorry, try again tomorrow!")
+        turns += 1
 
 
 def contains_char(word: str, character: str) -> bool:
