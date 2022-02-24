@@ -5,7 +5,7 @@ __author__ = """730477174"""
 
 def main() -> None:
     """The entrypoint of the program and main game loop."""
-    secret_word_global: str = "codes"  # This is the variable that contains the secret word used throughout the program.
+    secret_word_global: str = "frizz"  # This is the variable that contains the secret word used throughout the program.
     turns: int = 1
     while turns <= 6:
         print(f"=== Turn {turns}/6 ===")
