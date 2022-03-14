@@ -13,7 +13,7 @@ def test_invert_one() -> None:
 
 
 def test_invert_fringe() -> None:
-    """Tests a fringe use case of the invert function where a key error occurs."""
+    """Tests a fringe use case of the invert function."""
     assert invert({"Play": " "}) == {" ": "Play"}
 
 
