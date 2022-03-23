@@ -37,4 +37,48 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
     return result
 
 
-def head(input: dict[str, list[str]], row_number: int) -> dict[str, list[str]]:
+def head(input: dict[str, list[str]], row_number: int) -> dict[str, list[str]]: 
+    """Produce a new column-based table with only the second parameter rows of data for each column."""
+    result: dict[str, list[str]] = {}
+    if row_number >= len(input):
+        row_number = len(input)
+    for column in input:
+        result_list_2: list[str] = []
+        i: int = 0
+        while i < row_number:
+            result_list_2.append(input[column][i])
+            i += 1
+        result[column] = result_list_2
+    return result
+
+
+def select(input: dict[str, list[str]], column_names: list[str]) -> dict[str, list[str]]: 
+    """Produce a new column-based table with only a specific subset of the original columns."""
+    result_dict: dict[str, list[str]] = {}
+    for names in column_names:
+        result_dict[names] = input[names]
+    return result_dict
+
+
+def concat(first_dict: dict[str, list[str]], second_dict: dict[str, list[str]]) -> dict[str, list[str]]: 
+    """Produce a new column-bsaed table with two column-based tables combined."""
+    result: dict[str, list[str]] = {}
+    for column in first_dict:
+        result[column] = first_dict[column]
+    for column in second_dict:
+        if column in result:
+            result[column] += second_dict[column]
+        else:
+            result[column] = second_dict[column]
+    return result
+
+
+def count(value_frequency: list[str]) -> dict[str, int]:
+    """Produce a new dictionary which counts the amount of times a key appears within the data."""
+    result: dict[str, int] = {}
+    for item in value_frequency:
+        if item in result:
+            result[item] += 1
+        else:
+            result[item] = 1
+    return result
